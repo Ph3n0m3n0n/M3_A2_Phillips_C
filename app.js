@@ -12,6 +12,8 @@ var twod = require('./routes/twod');
 var threed = require('./routes/threed');
 var basics = require('./routes/basics');
 var tags = require('./routes/tags');
+var media = require('./routes/media');
+var location_aware = require('./routes/location_aware');
 
 var app = express();
 
@@ -34,6 +36,8 @@ app.use('/twod', twod);
 app.use('/threed', threed);
 app.use('/basics', basics);
 app.use('/tags', tags);
+app.use('/media', media);
+app.use('/location_aware', location_aware);
 
 
 // catch 404 and forward to error handler
