@@ -1,24 +1,22 @@
-
 <style>
     div#memory_board{
-    	background:#3C1600;;
-    	border:#E38E0F 1px solid;
-    	width:800px;
-    	height:400px;
-    	padding:24px;
-    	margin:0px auto;
+        background:#3C1600;;
+        border:#CFB055 1px solid;
+        width:800px;
+        height:400px;
+        padding:24px;
+        margin:0px auto;
     }
     div#memory_board > div{
-    	background: url(http://s3.burpple.com/foods/59c95beb0f20b55b6041449909_thumbnail.?1474615778) no-repeat;
-    	border:#000 1px solid;
-    	width:71px;
-    	height:71px;
-    	float:left;
-    	margin:10px;
-    	padding:20px;
-    	font-size:64px;
-    	cursor:pointer;
-    	text-align:center;
+        background: url(http://s3.burpple.com/foods/59c95beb0f20b55b6041449909_thumbnail.?1474615778) no-repeat;
+        border:#000 1px solid;
+        width:71px;
+        height:71px;
+        float:left;
+        margin:10px;
+        font-size:64px;
+        cursor:pointer;
+        text-align:center;
     }
     h1{
       text-align: center;
@@ -26,7 +24,7 @@
     }
     h2{
       text-align: center;
-      color: #E38E0F;
+      color: #CFB055;
     }
     </style>
 <script>
@@ -45,52 +43,52 @@ Array.prototype.memory_tile_shuffle = function(){
     }
 }
 function newBoard(){
-	tiles_flipped = 0;
-	var output = '';
+    tiles_flipped = 0;
+    var output = '';
     memory_array.memory_tile_shuffle();
-	for(var i = 0; i < memory_array.length; i++){
-		output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+memory_array[i]+'\')"></div>';
-	}
-	document.getElementById('memory_board').innerHTML = output;
+    for(var i = 0; i < memory_array.length; i++){
+        output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+memory_array[i]+'\')"></div>';
+    }
+    document.getElementById('memory_board').innerHTML = output;
 }
 function memoryFlipTile(tile,val){
-	if(tile.innerHTML == "" && memory_values.length < 2){
-		tile.style.background = '#FFF';
-		tile.innerHTML = val;
-		if(memory_values.length == 0){
-			memory_values.push(val);
-			memory_tile_ids.push(tile.id);
-		} else if(memory_values.length == 1){
-			memory_values.push(val);
-			memory_tile_ids.push(tile.id);
-			if(memory_values[0] == memory_values[1]){
-				tiles_flipped += 2;
-				// Clear both arrays
-				memory_values = [];
-            	memory_tile_ids = [];
-				// Check to see if the whole board is cleared
-				if(tiles_flipped == memory_array.length){
-					alert("Board cleared... generating new board");
-					document.getElementById('memory_board').innerHTML = "";
-					newBoard();
-				}
-			} else {
-				function flip2Back(){
-				    // Flip the 2 tiles back over
-				    var tile_1 = document.getElementById(memory_tile_ids[0]);
-				    var tile_2 = document.getElementById(memory_tile_ids[1]);
-				    tile_1.style.background = 'url(http://s3.burpple.com/foods/59c95beb0f20b55b6041449909_thumbnail.?1474615778) no-repeat';
-            	    tile_1.innerHTML = "";
-				    tile_2.style.background = 'url(http://s3.burpple.com/foods/59c95beb0f20b55b6041449909_thumbnail.?1474615778) no-repeat';
-            	    tile_2.innerHTML = "";
-				    // Clear both arrays
-				    memory_values = [];
-            	    memory_tile_ids = [];
-				}
-				setTimeout(flip2Back, 700);
-			}
-		}
-	}
+    if(tile.innerHTML == "" && memory_values.length < 2){
+        tile.style.background = '#FFF';
+        tile.innerHTML = val;
+        if(memory_values.length == 0){
+            memory_values.push(val);
+            memory_tile_ids.push(tile.id);
+        } else if(memory_values.length == 1){
+            memory_values.push(val);
+            memory_tile_ids.push(tile.id);
+            if(memory_values[0] == memory_values[1]){
+                tiles_flipped += 2;
+                // Clear both arrays
+                memory_values = [];
+                memory_tile_ids = [];
+                // Check to see if the whole board is cleared
+                if(tiles_flipped == memory_array.length){
+                    alert("Board cleared... generating new board");
+                    document.getElementById('memory_board').innerHTML = "";
+                    newBoard();
+                }
+            } else {
+                function flip2Back(){
+                    // Flip the 2 tiles back over
+                    var tile_1 = document.getElementById(memory_tile_ids[0]);
+                    var tile_2 = document.getElementById(memory_tile_ids[1]);
+                    tile_1.style.background = 'url(http://s3.burpple.com/foods/59c95beb0f20b55b6041449909_thumbnail.?1474615778) no-repeat';
+                    tile_1.innerHTML = "";
+                    tile_2.style.background = 'url(http://s3.burpple.com/foods/59c95beb0f20b55b6041449909_thumbnail.?1474615778) no-repeat';
+                    tile_2.innerHTML = "";
+                    // Clear both arrays
+                    memory_values = [];
+                    memory_tile_ids = [];
+                }
+                setTimeout(flip2Back, 700);
+            }
+        }
+    }
 }
 </script>
 
